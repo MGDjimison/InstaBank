@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Libelle{% endblock %}
+
+{% block body %}
+    <h1>Libelle</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ libelle.id }}</td>
+            </tr>
+            <tr>
+                <th>Libelle</th>
+                <td>{{ libelle.libelle }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_libelle_index') }}">back to list</a>
+
+    <a href="{{ path('app_libelle_edit', {'id': libelle.id}) }}">edit</a>
+
+    {{ include('libelle/_delete_form.html.twig') }}
+{% endblock %}
