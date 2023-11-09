@@ -18,8 +18,8 @@
         {% for budget in budgets %}
             <tr>
                 <td>{{ budget.id }}</td>
-                <td>{{ budget.libelle }}</td>
-                <td>{{ budget.montant }}</td>
+                <td>{{ budget.libelle.libelle }}</td>
+                <td>{{ budget.montant }} €</td>
                 <td>
                     <a href="{{ path('app_budget_show', {'id': budget.id}) }}">show</a>
                     <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">edit</a>
