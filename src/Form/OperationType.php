@@ -29,7 +29,6 @@ class OperationType extends AbstractType
                 }
             ])
             ->add('type', ChoiceType::class, [
-                'mapped' => false,
                 'choices' => [
                     'Dépôt' => 'Dépôt',
                     'Retrait' => 'Retrait',

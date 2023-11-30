@@ -4,21 +4,23 @@
 
 {% block body %}
     <div class="container">
-        <h1>Operations</h1>
+        <h1>Historique des operations</h1>
 
         <table class="table">
             <thead class="table-dark">
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Montant</th>
-            </tr>
+                <tr>
+                    <th>Operation n°</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Montant</th>
+                </tr>
             </thead>
             <tbody>
             {% for operation in operations %}
                 <tr class="table-light">
                     <td>{{ operation.id }}</td>
-                    <td>{{ operation.date ? operation.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ operation.date ? operation.date|date('d-m-Y') : '' }}</td>
+                    <td>{{ operation.type }}</td>
                     <td>{{ operation.montant }} €</td>
                 </tr>
             {% else %}
