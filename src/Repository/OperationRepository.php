@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Operation;
+use App\Entity\Search;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,6 +22,38 @@ class OperationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Operation::class);
     }
+
+    public function findSearch($comte_id, Search $search) {
+        $query = $this->createQueryBuilder('o')
+            ->where('o.compte = :compte_id')
+            ->setParameter('compte_id', $comte_id);
+
+        if (!empty($search->budgets)) {
+            $query = $query
+                ->andWhere('o.budget IN (:budgets)')
+                ->setParameter('budgets', $search->budgets);
+        }
+
+        return $query->getQuery()->execute();
+    }
+
+//    public function getOperationsByCompte(int $id) {
+//        $em = $this->getEntityManager();
+//        $query = $em->createQuery('
+//        SELECT o
+//        FROM App\Entity\Operation o
+//        JOIN o.compte c
+//        WHERE c.user = :user
+//        ')->setParameter('user', $id);
+//
+//        return $query->getResult();
+//    }
+//
+//    public function getOperationCompte(int $id) {
+//        $qb = $this->createQueryBuilder('o')
+//            ->join('App\Entity\Compte', 'c', Join::WITH, 'o.compte = :compte_id')
+//            ->setParameter('compte_id', $id);
+//    }
 
 //    /**
 //     * @return Operation[] Returns an array of Operation objects

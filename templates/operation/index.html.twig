@@ -6,28 +6,44 @@
     <div class="container">
         <h1>Historique des operations</h1>
 
+        {% if form %}
+            <div class="col-lg-3">
+                {{ form_start(form, {attr: {class: 'filter js-filter-form'}}) }}
+                <h4>Budgets</h4>
+                {{ form_row(form.budgets) }}
+                <button class="btn btn-primary btn-sm">Rechercher</button>
+                {{ form_end(form) }}
+            </div>
+        {% endif %}
+
         <table class="table">
             <thead class="table-dark">
                 <tr>
                     <th>Operation n°</th>
                     <th>Date</th>
+                    <th>Budget</th>
                     <th>Type</th>
                     <th>Montant</th>
                 </tr>
             </thead>
             <tbody>
-            {% for operation in operations %}
-                <tr class="table-light">
-                    <td>{{ operation.id }}</td>
-                    <td>{{ operation.date ? operation.date|date('d-m-Y') : '' }}</td>
-                    <td>{{ operation.type }}</td>
-                    <td>{{ operation.montant }} €</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
-            {% endfor %}
+                {% for operation in operations %}
+                    <tr class="table-light">
+                        <td>{{ operation.id }}</td>
+                        <td>{{ operation.date ? operation.date|date('d-m-Y') : '' }}</td>
+                        {% if operation.budget is not null %}
+                            <td>{{ operation.budget.nom }}</td>
+                        {% else %}
+                            <td>{{ operation.budget.nom|default('ND') }}</td>
+                        {% endif %}
+                        <td>{{ operation.type }}</td>
+                        <td>{{ operation.montant }} €</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
