@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Propriétaire</th>
                 <th>Solde</th>
                 <th>actions</th>
             </tr>
@@ -17,7 +18,8 @@
         {% for compte in comptes %}
             <tr>
                 <td>{{ compte.id }}</td>
-                <td>{{ compte.solde }}</td>
+                <td>{{ compte.user.nom }} {{ compte.user.prenom }}</td>
+                <td>{{ compte.solde }} €</td>
                 <td>
                     <a href="{{ path('app_compte_show', {'id': compte.id}) }}">show</a>
                     <a href="{{ path('app_compte_edit', {'id': compte.id}) }}">edit</a>

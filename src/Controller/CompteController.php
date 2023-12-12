@@ -6,6 +6,7 @@ use App\Entity\Compte;
 use App\Form\CompteType;
 use App\Repository\CompteRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,17 +24,24 @@ class CompteController extends AbstractController
     }
 
     #[Route('/new', name: 'app_compte_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, CompteRepository $compteRepository): Response
     {
         $compte = new Compte();
+        $current_user = $this->getUser();
+        $compte->setUser($current_user);
         $form = $this->createForm(CompteType::class, $compte);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($compte);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('app_compte_index', [], Response::HTTP_SEE_OTHER);
+            if (count($compteRepository->findCompte($current_user)) === 0) {
+                $entityManager->persist($compte);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+            } else {
+                $this->addFlash('alert','Vous possédez déjà ce type de compte !');
+            }
         }
 
         return $this->renderForm('compte/new.html.twig', [
@@ -76,6 +84,6 @@ class CompteController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_compte_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

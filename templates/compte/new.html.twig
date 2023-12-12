@@ -4,8 +4,11 @@
 
 {% block body %}
     <h1>Create new Compte</h1>
-
+    {% for message in app.flashes('alert') %}
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
     {{ include('compte/_form.html.twig') }}
 
-    <a href="{{ path('app_compte_index') }}">back to list</a>
 {% endblock %}
