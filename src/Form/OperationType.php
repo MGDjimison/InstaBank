@@ -25,7 +25,7 @@ class OperationType extends AbstractType
             ->add('budget', EntityType::class, [
                 'class' => Budget::class,
                 'choice_label' => function(Budget $budget) {
-                    return $budget->getLibelle()->getLibelle();
+                    return $budget->getNom();
                 }
             ])
             ->add('type', ChoiceType::class, [

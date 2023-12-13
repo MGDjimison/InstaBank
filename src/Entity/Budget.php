@@ -14,39 +14,24 @@ class Budget
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $montant = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Libelle $libelle = null;
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMontant(): ?string
+    public function getNom(): ?string
     {
-        return $this->montant;
+        return $this->nom;
     }
 
-    public function setMontant(string $montant): static
+    public function setNom(string $nom): static
     {
-        $this->montant = $montant;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getLibelle(): ?Libelle
-    {
-        return $this->libelle;
-    }
-
-    public function setLibelle(Libelle $libelle): static
-    {
-        $this->libelle = $libelle;
-
-        return $this;
-    }
 }

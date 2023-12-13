@@ -10,26 +10,24 @@
             <tr>
                 <th>Id</th>
                 <th>Libelle</th>
-                <th>Montant</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for budget in budgets %}
-            <tr>
-                <td>{{ budget.id }}</td>
-                <td>{{ budget.libelle.libelle }}</td>
-                <td>{{ budget.montant }} €</td>
-                <td>
-                    <a href="{{ path('app_budget_show', {'id': budget.id}) }}">show</a>
-                    <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for budget in budgets %}
+                <tr>
+                    <td>{{ budget.id }}</td>
+                    <td>{{ budget.nom }}</td>
+                    <td>
+                        <a href="{{ path('app_budget_show', {'id': budget.id}) }}">show</a>
+                        <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
