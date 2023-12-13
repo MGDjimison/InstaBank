@@ -7,17 +7,26 @@
 {% if app.user %}
     <h1 class="text-center">Mes comptes</h1>
 
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <h4>Bonjour {{ app.user.prenom }}</h4>
 
     {% for compte in mescomptes %}
-        <div class="row row-cols-2 g-3">
+        <div class="row col-6">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ compte.type.libelle }}</h5>
                         <p class="card-text">{{ compte.solde }} €</p>
                         <a href="{{ path('app_operation_index', {id: compte.id}) }}" class="card-link">
-                            <button type="button" class="btn btn-secondary">Voir operations</button>
+                            <button type="button" class="btn btn-secondary">Historique</button>
+                        </a>
+                        <a href="{{ path('app_mouvement', {id: compte.id}) }}" class="card-link">
+                            <button type="button" class="btn btn-success">Dépôt / Retrait</button>
                         </a>
                         <a href="{{ path('app_compte_delete', {id: compte.id}) }}" class="card-link">
                             <button type="button" class="btn btn-danger">Supprimer</button>
