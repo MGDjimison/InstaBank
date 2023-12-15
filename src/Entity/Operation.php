@@ -27,6 +27,9 @@ class Operation
     #[ORM\ManyToOne]
     private ?Budget $budget = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Operation
     public function setBudget(?Budget $budget): static
     {
         $this->budget = $budget;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }

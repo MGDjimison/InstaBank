@@ -16,10 +16,12 @@ class CompteType extends AbstractType
     {
         $builder
             ->add('solde', NumberType::class, [
+                'attr' => ['class' => 'm-3'],
                 'html5' => true,
                 'scale' => 2
             ])
             ->add('type', EntityType::class, [
+                'attr' => ['class' => 'm-3'],
                 'class' => TypeCompte::class,
                 'choice_label' => function(TypeCompte $typeCompte) {
                     return $typeCompte->getLibelle();

@@ -34,7 +34,8 @@ class CompteController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if (count($compteRepository->findCompte($current_user)) === 0) {
+            $typeIndique = $form->get('type')->getData();
+            if (count($compteRepository->findCompte($current_user, $typeIndique)) === 0) {
                 $entityManager->persist($compte);
                 $entityManager->flush();
 

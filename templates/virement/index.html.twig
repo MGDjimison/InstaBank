@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello VirementController!{% endblock %}
+{% block title %}Virement{% endblock %}
 
 {% block body %}
     {% for message in app.flashes('warning') %}
@@ -9,11 +9,20 @@
         </div>
     {% endfor %}
 
-    <h1>Virement</h1>
-    {{ form_start(form) }}
-        {{ form_row(form.debit) }}
-        {{ form_row(form.credit) }}
-        {{ form_row(form.montant) }}
-        <button type="submit" class="btn btn-primary">Valider</button>
-    {{ form_end(form) }}
+    <div class="box_compte">
+        <div class="box_compte_login">
+            <h1>Virement</h1>
+        </div>
+
+        <div class="box_compte_login">
+            {{ form_start(form) }}
+                {{ form_row(form.debit) }}
+                {{ form_row(form.credit) }}
+                {{ form_row(form.montant) }}
+                <button type="submit" class="btn btn-success">Valider</button>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
 {% endblock %}

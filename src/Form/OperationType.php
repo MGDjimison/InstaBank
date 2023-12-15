@@ -19,16 +19,19 @@ class OperationType extends AbstractType
     {
         $builder
             ->add('montant', NumberType::class, [
+                'attr' => ['class' => 'm-2'],
                 'html5' => true,
                 'scale' => 2
             ])
             ->add('budget', EntityType::class, [
+                'attr' => ['class' => 'm-2'],
                 'class' => Budget::class,
                 'choice_label' => function(Budget $budget) {
                     return $budget->getNom();
                 }
             ])
             ->add('type', ChoiceType::class, [
+                'attr' => ['class' => 'm-2'],
                 'choices' => [
                     'Dépôt' => 'Dépôt',
                     'Retrait' => 'Retrait',
@@ -36,8 +39,8 @@ class OperationType extends AbstractType
                 'expanded' => false,
                 'multiple' => false
             ])
-            ->add('save', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary']
+            ->add('Confirmer', SubmitType::class, [
+                'attr' => ['class' => 'btn btn-success']
             ])
         ;
     }

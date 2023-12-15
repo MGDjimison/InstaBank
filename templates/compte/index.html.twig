@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Compte index</h1>
 
-    <table class="table">
+    <table class="table table-secondary px-3">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,11 +27,9 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Pas de données</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_compte_new') }}">Create new</a>
 {% endblock %}

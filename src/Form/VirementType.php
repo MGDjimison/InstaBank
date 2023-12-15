@@ -20,6 +20,7 @@ class VirementType extends AbstractType
 
         $builder
             ->add('debit', EntityType::class, [
+                'attr' => ['class' => 'm-3'],
                 'label' => 'Compte à débiter',
                 'class' => Compte::class,
                 'query_builder' => function(CompteRepository $repository) use($user) {
@@ -32,6 +33,7 @@ class VirementType extends AbstractType
                 },
             ])
             ->add('credit', EntityType::class, [
+                'attr' => ['class' => 'm-3'],
                 'label' => 'Compte à créditer',
                 'class' => Compte::class,
                 'query_builder' => function(CompteRepository $repository) use($user) {
@@ -44,6 +46,7 @@ class VirementType extends AbstractType
                 },
             ])
             ->add('montant', NumberType::class, [
+                'attr' => ['class' => 'm-3'],
                 'html5' => true,
                 'scale' => 2,
                 'constraints' => [

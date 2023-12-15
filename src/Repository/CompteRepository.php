@@ -23,16 +23,16 @@ class CompteRepository extends ServiceEntityRepository
         parent::__construct($registry, Compte::class);
     }
 
-    public function findCompte(User $user) {
+    public function findCompte(User $user, TypeCompte $typeCompte) {
         $manager = $this->getEntityManager();
 
         $query = $manager->createQuery('
         SELECT c, t
         FROM App\Entity\Compte c
         INNER JOIN c.type t
-        WHERE c.user = :current_user');
+        WHERE c.user = :current_user AND t.libelle = :type_compte');
 
-        //$query->setParameter('type_compte', $typeCompte->getLibelle());
+        $query->setParameter('type_compte', $typeCompte->getLibelle());
         $query->setParameter('current_user', $user);
 
         return $query->getResult();

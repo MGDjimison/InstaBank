@@ -1,14 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Compte{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Create new Compte</h1>
-    {% for message in app.flashes('alert') %}
-        <div class="alert alert-danger" role="alert">
-            {{ message }}
+    <div class="box_compte">
+        
+        <div class="box_compte_login">
+            <h1>Ajouter un nouveau compte</h1>
         </div>
-    {% endfor %}
-    {{ include('compte/_form.html.twig') }}
 
+        <div class="box_compte_login">
+            
+            {% for message in app.flashes('alert') %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ include('compte/_form.html.twig') }}
+
+        </div>
+
+    </div>
 {% endblock %}

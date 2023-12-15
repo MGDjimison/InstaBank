@@ -1,23 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Operation index{% endblock %}
+{% block title %}Historique d'Operations{% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1>Historique des operations</h1>
+        <div class="box_compte_nom">
+            <h1>Historique des operations</h1>
+        </div>
 
         {% if form %}
-            <div class="col-lg-3">
-                {{ form_start(form, {attr: {class: 'filter js-filter-form'}}) }}
-                <h4>Budgets</h4>
-                {{ form_row(form.budgets) }}
-                <button class="btn btn-primary btn-sm">Rechercher</button>
-                {{ form_end(form) }}
+            <div class="box_compte">
+                <div class="box_compte_login">
+                    {{ form_start(form, {attr: {class: 'filter js-filter-form'}}) }}
+                    <h4>Budgets</h4>
+                    <div class="table">
+                        {{ form_row(form.budgets) }}
+                    </div>
+                    <button class="btn btn-success btn-m my-3">Rechercher</button>
+                    {{ form_end(form) }}
+                </div>
             </div>
         {% endif %}
 
-        <table class="table">
-            <thead class="table-dark">
+        <table class="box_compte table table-secondary p-3">
+            <thead class="table-success">
                 <tr>
                     <th>Operation n°</th>
                     <th>Date</th>
@@ -41,7 +47,7 @@
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="4">no records found</td>
+                        <td colspan="5">Pas d'operation disponible</td>
                     </tr>
                 {% endfor %}
             </tbody>
