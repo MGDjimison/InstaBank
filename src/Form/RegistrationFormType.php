@@ -21,21 +21,13 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom',TextType::class, [
                 'attr' => ['class' => 'm-3'],
-            ]
-            
-            
-            )
+            ])
             ->add('prenom',TextType::class, [
                 'attr' => ['class' => 'm-3'],
-            ]
-            
-            
-            )
+            ])
             ->add('email', EmailType::class, [
                 'attr' => ['class' => 'm-3'],
-            ]
-            
-            )
+            ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller

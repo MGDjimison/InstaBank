@@ -10,7 +10,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class MouvementController extends AbstractController
 {
@@ -35,7 +34,7 @@ class MouvementController extends AbstractController
             $operation->setMontant($montantIndique);
             $operation->setDate(new \DateTime('now'));
             $operation->setType($form->get('type')->getData());
-
+            $operation->setBudget($form->get('budget')->getData());
             // Persiste et flush toutes les données précédemment modifiées ou ajoutées
             $manager->persist($compte);
             $manager->persist($operation);

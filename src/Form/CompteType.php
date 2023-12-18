@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class CompteType extends AbstractType
 {
@@ -18,7 +19,13 @@ class CompteType extends AbstractType
             ->add('solde', NumberType::class, [
                 'attr' => ['class' => 'm-3'],
                 'html5' => true,
-                'scale' => 2
+                'scale' => 2,
+                'constraints' => [
+                    new GreaterThan([
+                        'value' => 0,
+                        'message' => 'Vous devez fournir un nombre positif'
+                    ])
+                ]
             ])
             ->add('type', EntityType::class, [
                 'attr' => ['class' => 'm-3'],

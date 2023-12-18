@@ -12,11 +12,11 @@
             <div class="box_compte">
                 <div class="box_compte_login">
                     {{ form_start(form, {attr: {class: 'filter js-filter-form'}}) }}
-                    <h4>Budgets</h4>
-                    <div class="table">
-                        {{ form_row(form.budgets) }}
-                    </div>
-                    <button class="btn btn-success btn-m my-3">Rechercher</button>
+                        <h4>Budgets</h4>
+                        <div class="table">
+                            {{ form_row(form.budgets) }}
+                        </div>
+                        <button class="btn btn-success btn-m my-3">Rechercher</button>
                     {{ form_end(form) }}
                 </div>
             </div>
@@ -30,6 +30,7 @@
                     <th>Budget</th>
                     <th>Type</th>
                     <th>Montant</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +45,11 @@
                         {% endif %}
                         <td>{{ operation.type }}</td>
                         <td>{{ operation.montant }} €</td>
+                        <td>
+                            <a href="{{ path('app_operation_edit', {id : operation.id}) }}">
+                                <button class="btn btn-light">Modifier</button>
+                            </a>
+                        </td>
                     </tr>
                 {% else %}
                     <tr>

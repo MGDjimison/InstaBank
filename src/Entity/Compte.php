@@ -22,7 +22,7 @@ class Compte
     #[ORM\Column]
     private ?float $solde = null;
 
-    #[ORM\OneToMany(mappedBy: 'compte', targetEntity: Operation::class)]
+    #[ORM\OneToMany(mappedBy: 'compte', targetEntity: Operation::class, orphanRemoval: true)]
     private Collection $operations;
 
     #[ORM\ManyToOne]

@@ -33,7 +33,7 @@ class BudgetController extends AbstractController
             $entityManager->persist($budget);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_budget_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('budget/new.html.twig', [
