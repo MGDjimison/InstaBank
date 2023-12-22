@@ -20,6 +20,10 @@
     </div>
 
     <div class="box_compte justify-content-center col-1">
+        {% if nbComptes == 0 %}
+            <h1>Vous n'avez pas encore de compte</h1>
+        {% endif %}
+
         {% for compte in mescomptes %}
             <div class="col m-3">
                 <div class="card">

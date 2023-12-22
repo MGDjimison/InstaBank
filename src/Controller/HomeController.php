@@ -14,10 +14,12 @@ class HomeController extends AbstractController
     {
         $user = $this->getUser();
         $mescomptes = $compteRepository->findBy(['user' => $user]);
+        $nbComptes = count($mescomptes);
 
         return $this->render('home/index.html.twig', [
             'user' => $user,
-            'mescomptes' => $mescomptes
+            'mescomptes' => $mescomptes,
+            'nbComptes' => $nbComptes
         ]);
     }
 }
