@@ -30,6 +30,9 @@
                     </span>
                     <form class="">
                         {% if app.user %}
+                            <a  href="{{ path('app_user_edit', {id: app.user.id}) }}">
+                                <button class="btn btn-light mx-1" type="button">Informations personnelles</button>
+                            </a>
                             <a  href="{{ path('app_virement') }}">
                                 <button class="btn btn-light mx-1" type="button">Virements</button>
                             </a>
