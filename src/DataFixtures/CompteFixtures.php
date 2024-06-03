@@ -21,6 +21,7 @@ class CompteFixtures extends Fixture implements DependentFixtureInterface
             $compte->setUser($this->getReference('user_' . $faker->numberBetween(0, 19)));
             $compte->setType($this->getReference($faker->randomElement($typeCompte)));
             $compte->setSolde($faker->randomFloat(2,0,10000));
+            $compte->setDateCreation($faker->dateTimeThisDecade);
             $this->addReference('compte_' . $i, $compte);
             $manager->persist($compte);
         }

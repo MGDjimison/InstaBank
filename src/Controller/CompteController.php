@@ -6,7 +6,6 @@ use App\Entity\Compte;
 use App\Form\CompteType;
 use App\Repository\CompteRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\This;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,6 +28,7 @@ class CompteController extends AbstractController
         $compte = new Compte();
         $current_user = $this->getUser();
         $compte->setUser($current_user);
+        $compte->setDateCreation(new \DateTime('now'));
         $form = $this->createForm(CompteType::class, $compte);
         $form->handleRequest($request);
 
