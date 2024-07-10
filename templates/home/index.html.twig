@@ -9,15 +9,15 @@
         <h1 class="text-center">Mes comptes</h1>
     </div>
 
+    <div class="box_compte_nom">
+        <h4>Bonjour {{ app.user.prenom }}</h4>
+    </div>
+
     {% for message in app.flashes('success') %}
         <div class="alert alert-success" role="alert">
             {{ message }}
         </div>
     {% endfor %}
-    
-    <div class="box_compte_nom">
-        <h4>Bonjour {{ app.user.prenom }}</h4>
-    </div>
 
     <div class="box_compte justify-content-center col-1">
         {% if nbComptes == 0 %}
@@ -34,7 +34,7 @@
                             <button type="button" class="btn btn-secondary">Historique</button>
                         </a>
                         <a href="{{ path('app_mouvement', {id: compte.id}) }}" class="card-link">
-                            <button type="button" class="btn btn-success">Ajouter une operation</button>
+                            <button type="button" class="btn btn-success">Dépôt / Retrait</button>
                         </a>
                         <a href="{{ path('app_compte_delete', {id: compte.id}) }}" class="card-link">
                             <button type="button" class="btn btn-danger">Supprimer</button>

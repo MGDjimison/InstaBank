@@ -104,3 +104,9 @@
     align-items: center;
     text-align: center;
 }
+
+@media (max-width: 767px) {
+    .navbar-content {
+        justify-content: space-between;
+    }
+}

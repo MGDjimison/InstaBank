@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Libelle</th>
+                <th>Nom</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,8 +19,8 @@
                     <td>{{ budget.id }}</td>
                     <td>{{ budget.nom }}</td>
                     <td>
-                        <a href="{{ path('app_budget_show', {'id': budget.id}) }}">show</a>
-                        <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">edit</a>
+                        <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">Modifier</a>
+                        <a href="{{ path('app_budget_show', {'id': budget.id}) }}">Supprimer</a>
                     </td>
                 </tr>
             {% else %}

@@ -16,6 +16,7 @@ class VirementController extends AbstractController
     #[Route('/virement', name: 'app_virement')]
     public function index(Request $request, CompteRepository $compteRepository, EntityManagerInterface $manager): Response
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED');
         $form = $this->createForm(VirementType::class, null, ['user' => $this->getUser()]);
         $form->handleRequest($request);
 

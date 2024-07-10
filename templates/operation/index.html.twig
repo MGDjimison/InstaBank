@@ -30,7 +30,6 @@
                     <th>Budget</th>
                     <th>Type</th>
                     <th>Montant</th>
-                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,11 +44,6 @@
                         {% endif %}
                         <td>{{ operation.type }}</td>
                         <td>{{ operation.montant }} €</td>
-                        <td>
-                            <a href="{{ path('app_operation_edit', {id : operation.id}) }}">
-                                <button class="btn btn-light">Modifier</button>
-                            </a>
-                        </td>
                     </tr>
                 {% else %}
                     <tr>
